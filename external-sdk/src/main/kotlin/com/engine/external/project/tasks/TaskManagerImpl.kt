@@ -33,6 +33,6 @@ class TaskManagerImpl : TaskManager {
         scheduler
 
     override fun cancel(task: Task): Unit =
-        tasks[task]!!.dispose()
+        tasks[task]?.dispose().run { Unit }
 
 }
