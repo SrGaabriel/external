@@ -8,6 +8,8 @@ public abstract class ExternalServer {
     private EventManager eventManager;
     private TaskManager taskManager;
 
+    public abstract void start();
+
     public EventManager getEventManager() {
         return eventManager;
     }

@@ -4,13 +4,8 @@ import com.engine.external.project.ExternalServer;
 
 public abstract class MinecraftPlugin {
 
-    private final String name;
-    private final ExternalServer server;
-
-    public MinecraftPlugin(String name, ExternalServer server) {
-        this.name = name;
-        this.server = server;
-    }
+    private String name;
+    private ExternalServer server;
 
     public abstract void start();
 
@@ -18,6 +13,10 @@ public abstract class MinecraftPlugin {
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public ExternalServer getServer() {

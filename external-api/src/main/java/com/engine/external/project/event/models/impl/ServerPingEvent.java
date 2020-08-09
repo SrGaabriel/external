@@ -1,6 +1,6 @@
-package com.engine.external.project.event.events.impl;
+package com.engine.external.project.event.models.impl;
 
-import com.engine.external.project.event.events.AbstractEvent;
+import com.engine.external.project.event.models.AbstractEvent;
 
 public class ServerPingEvent extends AbstractEvent {
 

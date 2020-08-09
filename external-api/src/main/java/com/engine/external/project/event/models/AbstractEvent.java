@@ -1,4 +1,4 @@
-package com.engine.external.project.event.events;
+package com.engine.external.project.event.models;
 
 public abstract class AbstractEvent {
 

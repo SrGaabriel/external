@@ -8,10 +8,16 @@ version = "1.0-SNAPSHOT"
 
 plugins.apply("kotlin")
 
+repositories {
+    google()
+    maven("https://dl.bintray.com/kodein-framework/kodein-dev")
+}
+
 dependencies {
     api(project(":external-api"))
 
     implementation(kotlin("stdlib-jdk8"))
+    implementation("org.kodein.di:kodein-di:7.0.0")
 }
 
 configure<JavaPluginConvention> {
