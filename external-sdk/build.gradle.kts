@@ -8,14 +8,10 @@ version = "1.0-SNAPSHOT"
 
 plugins.apply("kotlin")
 
-repositories {
-    mavenCentral()
-}
-
 dependencies {
-    implementation(kotlin("stdlib-jdk8"))
-
     api(project(":external-api"))
+
+    implementation(kotlin("stdlib-jdk8"))
 }
 
 configure<JavaPluginConvention> {

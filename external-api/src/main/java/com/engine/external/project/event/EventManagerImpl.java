@@ -1,24 +1,31 @@
 package com.engine.external.project.event;
 
+import com.engine.external.project.ExternalServer;
 import com.engine.external.project.event.events.AbstractEvent;
 import com.engine.external.project.event.events.EventHolder;
 import reactor.core.Disposable;
-import reactor.core.publisher.*;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.FluxProcessor;
+import reactor.core.publisher.Processors;
+import reactor.core.publisher.Sinks;
 import reactor.core.scheduler.Scheduler;
-import reactor.core.scheduler.Schedulers;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class EventManagerImpl implements EventManager {
+public final class EventManagerImpl implements EventManager {
 
     private final Map<EventHolder, Disposable> listeners = new HashMap<>();
 
+    private final Scheduler scheduler;
     private final FluxProcessor<AbstractEvent, ? super AbstractEvent> abstractEventFluxProcessor = Processors.multicast();
-    private final Scheduler scheduler = Schedulers.newSingle("Event Manager");
 
-    private final Sinks.StandaloneFluxSink<Object> eventSink = Sinks.multicast();
+    public EventManagerImpl(ExternalServer server) {
+        scheduler = server.getScheduler();
+    }
+
+    private final Sinks.StandaloneFluxSink<Object> eventSink = Sinks.multicastNoWarmup();
     @Override
     public void process(AbstractEvent event) {
         eventSink.next(event);
@@ -27,12 +34,13 @@ public class EventManagerImpl implements EventManager {
     @Override
     public <T extends AbstractEvent> Flux<T> on(Class<T> klass) {
         return abstractEventFluxProcessor.publishOn(scheduler)
+                .log()
                 .ofType(klass);
     }
 
     @Override
     public void registerListener(EventHolder holder) {
-        on(AbstractEvent.class).subscribe(holder::onEvent);
+        listeners.put(holder, on(AbstractEvent.class).subscribe(holder::onEvent));
     }
 
     @Override

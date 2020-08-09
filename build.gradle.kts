@@ -18,6 +18,9 @@ subprojects {
         testImplementation("junit", "junit", "4.12")
 
         implementation("io.projectreactor:reactor-core:3.4.0-M1")
+
+        implementation("org.slf4j:slf4j-api:1.7.29")
+        implementation("ch.qos.logback:logback-classic:0.9.26")
     }
 
 
