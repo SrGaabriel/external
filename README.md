@@ -1,4 +1,4 @@
-![image](https://avatars0.githubusercontent.com/u/68523546?s=128&u=650299929d9a2bd95f8f0aad40e5e6762e59c904&v=4) # External Server Software
+![image](https://avatars0.githubusercontent.com/u/68523546?s=128&u=650299929d9a2bd95f8f0aad40e5e6762e59c904&v=4)
 
 ## Overview
 
