@@ -9,15 +9,17 @@ version = "1.0-SNAPSHOT"
 plugins.apply("kotlin")
 
 repositories {
-    google()
-    maven("https://dl.bintray.com/kodein-framework/kodein-dev")
+    mavenCentral()
 }
 
 dependencies {
     api(project(":external-api"))
 
+    implementation("com.mojang:authlib:1.5.19-SNAPSHOT")
+
+    implementation("io.netty:netty-all:4.1.51.Final")
+
     implementation(kotlin("stdlib-jdk8"))
-    implementation("org.kodein.di:kodein-di:7.0.0")
 }
 
 configure<JavaPluginConvention> {

@@ -1,8 +1,6 @@
-package com.engine.external.project.utils;
+package com.engine.external.project.color;
 
 public enum Color {
-
-
     BLACK("0", "\u001B[30m"),
     RESET("r", "\u001B[0m"),
     WHITE("f", "\u001B[97m"),
@@ -21,20 +19,20 @@ public enum Color {
     LIGHT_PURPLE("d", "\u001B[95m"),
     LIGHT_YELLOW("e", "\u001B[93m");
 
-
-    private final String code;
+    private final String regex;
     private final String ansi;
 
-    Color(String colorCode, String colorAnsi) {
-        this.code = colorCode;
-        this.ansi = colorAnsi;
+    Color(String regex, String ansi) {
+        this.regex = regex;
+        this.ansi = ansi;
     }
 
-    public String getCode() {
-        return code;
+    public String toRegex() {
+        return regex;
     }
 
-    public String getAnsi() {
+    public String toANSI() {
         return ansi;
     }
+
 }

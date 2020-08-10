@@ -1,9 +1,11 @@
 package com.engine.external.project.stream;
 
+import com.engine.external.project.stream.packet.Packet;
+
 import java.util.function.Consumer;
 
 public interface Stream {
 
-    <T> void listen(int protocol, Class<T> packet, Consumer<T> consumer);
+    <T extends Packet> void listen(int protocol, Class<T> packet, Consumer<T> consumer);
 
 }

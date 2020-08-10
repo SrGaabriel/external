@@ -1,6 +1,5 @@
-package com.engine.external.project.events
+package com.engine.external.project.event
 
-import com.engine.external.project.event.EventManager
 import com.engine.external.project.event.models.AbstractEvent
 import com.engine.external.project.event.models.EventHolder
 import reactor.core.Disposable
