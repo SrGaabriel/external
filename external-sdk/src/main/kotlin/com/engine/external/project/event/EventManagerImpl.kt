@@ -1,6 +1,5 @@
 package com.engine.external.project.event
 
-import com.engine.external.project.event.models.AbstractEvent
 import com.engine.external.project.event.models.EventHolder
 import reactor.core.Disposable
 import reactor.core.publisher.Flux

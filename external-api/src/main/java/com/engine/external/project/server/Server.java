@@ -1,7 +1,7 @@
 package com.engine.external.project.server;
 
 import com.engine.external.project.event.EventManager;
-import com.engine.external.project.util.tasks.TaskManager;
+import com.engine.external.project.schedulers.SchedulerManager;
 
 public interface Server {
 
@@ -10,7 +10,7 @@ public interface Server {
      * @since 0.1
      * @return The server's {@link EventManager}
      */
-    public abstract EventManager getEventManager();
+    EventManager getEventManager();
 
     /**
      * Overrides the current server' {@link EventManager}
@@ -18,21 +18,21 @@ public interface Server {
      * @since 0.1
      * @param eventManager The new event manager
      */
-    public abstract void setEventManager(EventManager eventManager);
+    void setEventManager(EventManager eventManager);
 
     /**
      * @since 0.1
-     * @return The server's {@link TaskManager}
+     * @return The server's {@link SchedulerManager}
      */
-    public abstract TaskManager getTaskManager();
+    SchedulerManager getSchedulerManager();
 
     /**
-     * Overrides the current server's {@link TaskManager}
+     * Overrides the current server's {@link SchedulerManager}
      *
      * @since 0.1
      * @param taskManager The new task manager
      */
-    public abstract void setTaskManager(TaskManager taskManager);
+    void setSchedulerManager(SchedulerManager taskManager);
 
 
 }

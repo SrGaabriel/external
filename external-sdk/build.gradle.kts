@@ -10,13 +10,15 @@ plugins.apply("kotlin")
 
 repositories {
     mavenCentral()
+
+    maven("https://libraries.minecraft.net")
+    maven("https://mvnrepository.com/artifact/io.netty/netty-all")
 }
 
 dependencies {
     api(project(":external-api"))
 
-    implementation("com.mojang:authlib:1.5.19-SNAPSHOT")
-
+    implementation("com.mojang:authlib:1.5.21")
     implementation("io.netty:netty-all:4.1.51.Final")
 
     implementation(kotlin("stdlib-jdk8"))
