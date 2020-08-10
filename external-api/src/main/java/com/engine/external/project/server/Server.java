@@ -6,7 +6,6 @@ import com.engine.external.project.schedulers.SchedulerManager;
 public interface Server {
 
     /**
-     *
      * @since 0.1
      * @return The server's {@link EventManager}
      */
@@ -30,9 +29,9 @@ public interface Server {
      * Overrides the current server's {@link SchedulerManager}
      *
      * @since 0.1
-     * @param taskManager The new task manager
+     * @param schedulerManager The new scheduler manager
      */
-    void setSchedulerManager(SchedulerManager taskManager);
+    void setSchedulerManager(SchedulerManager schedulerManager);
 
 
 }

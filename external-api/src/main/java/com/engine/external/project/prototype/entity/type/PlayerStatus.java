@@ -1,4 +1,8 @@
 package com.engine.external.project.prototype.entity.type;
 
-public enum EntityTypes {
+public enum PlayerStatus {
+
+    ONLINE,
+    OFFLINE
+
 }
