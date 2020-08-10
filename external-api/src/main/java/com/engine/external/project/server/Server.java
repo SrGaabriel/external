@@ -1,7 +1,7 @@
 package com.engine.external.project.server;
 
 import com.engine.external.project.event.EventManager;
-import com.engine.external.project.schedulers.SchedulerManager;
+import com.engine.external.project.scheduler.SchedulerManager;
 
 public interface Server {
 

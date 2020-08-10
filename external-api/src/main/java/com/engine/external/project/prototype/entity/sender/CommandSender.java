@@ -1,6 +1,6 @@
-package com.engine.external.project.prototype.entity;
+package com.engine.external.project.prototype.entity.sender;
 
-import com.engine.external.project.commands.AbstractCommand;
+import com.engine.external.project.prototype.entity.Entity;
 import com.engine.external.project.prototype.entity.creature.player.Player;
 
 import java.util.Collection;

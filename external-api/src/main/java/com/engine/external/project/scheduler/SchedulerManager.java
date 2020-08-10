@@ -1,4 +1,4 @@
-package com.engine.external.project.schedulers;
+package com.engine.external.project.scheduler;
 
 import reactor.core.scheduler.Scheduler;
 
