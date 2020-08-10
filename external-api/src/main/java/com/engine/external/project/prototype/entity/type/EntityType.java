@@ -5,6 +5,7 @@ public enum EntityType {
     CREEPER,
     PIGMAN,
     PLAYER,
+    TERMINAL,
     VILLAGER,
     ZOMBIE
 

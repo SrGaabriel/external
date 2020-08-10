@@ -21,6 +21,8 @@ dependencies {
     implementation("com.mojang:authlib:1.5.21")
     implementation("io.netty:netty-all:4.1.51.Final")
 
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.8")
+
     implementation(kotlin("stdlib-jdk8"))
 }
 

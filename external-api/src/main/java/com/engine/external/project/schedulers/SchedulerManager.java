@@ -14,4 +14,6 @@ public interface SchedulerManager {
 
     List<Runnable> getTasks();
 
+    void cancel(Runnable task);
+
 }

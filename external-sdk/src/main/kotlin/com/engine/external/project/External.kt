@@ -1,19 +1,50 @@
 package com.engine.external.project
 
+import com.engine.external.project.entity.impl.ServerTerminal
 import com.engine.external.project.event.EventManager
 import com.engine.external.project.event.EventManagerImpl
-import com.engine.external.project.scheduler.SchedulerManagerImpl
+import com.engine.external.project.log.ConsoleInputController
+import com.engine.external.project.manager.SchedulerManagerImpl
+import com.engine.external.project.prototype.entity.creature.terminal.TerminalEntity
 import com.engine.external.project.schedulers.SchedulerManager
 import com.engine.external.project.server.Server
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.asCoroutineDispatcher
+import org.koin.core.KoinComponent
+import org.koin.core.context.startKoin
+import org.koin.core.get
+import org.koin.dsl.module
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
+import java.util.concurrent.Executors
 
-object External: Server {
+object External: Server, KoinComponent {
 
     private var eventManager: EventManager = EventManagerImpl()
     private var schedulerManager: SchedulerManager = SchedulerManagerImpl()
 
     @JvmStatic
     fun main(args: Array<String>) {
-        println(getLogo())
+        startKoin {
+            modules(module {
+                single<TerminalEntity> {
+                    ServerTerminal()
+                }
+                single<Logger> {
+                    LoggerFactory.getLogger(External::class.java)
+                }
+                single {
+                    ConsoleInputController()
+                }
+                single {
+                    CoroutineScope(Executors.newFixedThreadPool(1).asCoroutineDispatcher() + Job())
+                }
+            })
+        }
+
+        get<ConsoleInputController>().init()
     }
 
     /**
@@ -48,23 +79,6 @@ object External: Server {
      */
     override fun setSchedulerManager(schedulerManager: SchedulerManager) {
         this.schedulerManager = schedulerManager
-    }
-
-    private fun getLogo(): String {
-        return """
-                                                                                          .---. 
-       __.....__                                   __.....__                _..._             |   | 
-   .-''         '.                             .-''         '.            .'     '.           |   | 
-  /     .-''"'-.  `.                     .|   /     .-''"'-.  `. .-,.--. .   .-.   .          |   | 
- /     /________\   \ ____     _____   .' |_ /     /________\   \|  .-. ||  '   '  |    __    |   | 
- |                  |`.   \  .'    / .'     ||                  || |  | ||  |   |  | .:--.'.  |   | 
- \    .-------------'  `.  `'    .' '--.  .-'\    .-------------'| |  | ||  |   |  |/ |   \ | |   | 
-  \    '-.____...---.    '.    .'      |  |   \    '-.____...---.| |  '- |  |   |  |`" __ | | |   | 
-   `.             .'     .'     `.     |  |    `.             .' | |     |  |   |  | .'.''| | |   | 
-     `''-...... -'     .'  .'`.   `.   |  '.'    `''-...... -'   | |     |  |   |  |/ /   | |_'---' 
-                     .'   /    `.   `. |   /                     |_|     |  |   |  |\ \._,\ '/      
-                    '----'       '----'`'-'                              '--'   '--' `--'  `"       
-        """.trimIndent()
     }
 
 }

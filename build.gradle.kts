@@ -22,7 +22,7 @@ subprojects {
         implementation("io.projectreactor:reactor-core:3.4.0-M1")
         implementation("org.slf4j:slf4j-api:1.7.29")
 
-        implementation("org.kodein.di:kodein-di:7.0.0")
+        implementation("org.koin:koin-core:2.1.6")
         implementation("ch.qos.logback:logback-classic:0.9.26")
     }
 }

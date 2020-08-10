@@ -6,7 +6,7 @@ import com.engine.external.project.prototype.vector.Vector
 import com.mojang.authlib.GameProfile
 import java.util.*
 
-class PlayerImpl internal constructor(
+data class PlayerImpl internal constructor(
     private val name: String,
     private val profile: GameProfile
 ): Player {

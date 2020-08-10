@@ -30,6 +30,15 @@ public class CommandContext {
     }
 
     /**
+     * Sends a message to the command sender
+     *
+     * @param message The command's sender
+     */
+    public void reply(String... message) {
+        sender.sendMessage(message);
+    }
+
+    /**
      * @since 0.1
      * @return The entity that executed the {@link AbstractCommand}
      */
