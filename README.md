@@ -4,8 +4,6 @@
 
 External is a Java and Kotlin server-side [Minecraft](https://www.minecraft.net/pt-br/) software with an extremely powerful and simple API and SDK that provides a very clean and efficient code.	
 
-![invite](http://invidget.switchblade.xyz/b6PDzCX)
-
 
 ## 📝 Documentation
 
